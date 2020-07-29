@@ -1,1 +1,1 @@
-# edatribe_list
+# 英配部落动画列表
