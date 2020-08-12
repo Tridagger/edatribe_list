@@ -18,19 +18,22 @@ function getItem(item, keyword = '') {
         if(!pattern.test(number+title)){
             return '';
         }
-        // 生成正则表达式
-        var keywordLower = keyword.toLowerCase();
-        var patternLower = new RegExp(keywordLower, 'gm');
-        //高亮处理
-        number = number.replace(patternLower, '<label style="color:#0f0;background-color:#ff0">' + keywordLower + '</label>');
-        title = title.replace(patternLower, '<label style="color:#0f0;background-color:#ff0">' + keywordLower + '</label>');
+        // // 生成正则表达式
+        // var keywordLower = keyword.toLowerCase();
+        // var patternLower = new RegExp(keywordLower, 'gm');
+        // //高亮处理
+        // number = number.replace(patternLower, '<label style="color:#0f0;background-color:#ff0">' + keywordLower + '</label>');
+        // title = title.replace(patternLower, '<label style="color:#0f0;background-color:#ff0">' + keywordLower + '</label>');
 
-        var keywordUp = keyword.toUpperCase();
-        var patternUp = new RegExp(keywordUp, 'gm');
-        //高亮处理
-        number = number.replace(patternUp, '<label style="color:#0f0;background-color:#ff0">' + keywordUp + '</label>');
-        title = title.replace(patternUp, '<label style="color:#0f0;background-color:#ff0">' + keywordUp + '</label>');
-
+        // var keywordUp = keyword.toUpperCase();
+        // var patternUp = new RegExp(keywordUp, 'gm');
+        // //高亮处理
+        // number = number.replace(patternUp, '<label style="color:#0f0;background-color:#ff0">' + keywordUp + '</label>');
+        // title = title.replace(patternUp, '<label style="color:#0f0;background-color:#ff0">' + keywordUp + '</label>');
+        title = title.replace(pattern, function (match) {
+            // console.log(match,param,offset,string);
+            return '<label style="color:#f00;background-color:#ff0">' + match + '</label>';
+        });
 
     }
     return '<li><font face="Microsoft Yahei">[' + number + '] ' + title + '</font></li>';
